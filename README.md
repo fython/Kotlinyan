@@ -6,7 +6,7 @@
 >
 > 让 Kotlin Android 应用开发更加简单、优雅
 
-[English Documentation (Sorry... It is unfinished)](README-EN.md)
+[English Documentation (Sorry... It hasn't finished yet)](README-EN.md)
 
 
 **这个库仍在开发中……暂时功能很少**
