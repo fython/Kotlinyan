@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+			  tools:context=".ViewExtDemoFragment">
+
+	<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+		<TextView
+				style="@style/HeaderText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:padding="16dp"
+				android:text="Toggle keyboard"/>
+
+		<EditText
+				android:id="@+id/keyboard_test_edit"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp"/>
+
+		<android.support.v7.widget.ButtonBarLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp">
+
+			<Button
+					android:id="@+id/show_keyboard"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Show keyboard"/>
+
+			<Button
+					android:id="@+id/hide_keyboard"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Hide keyboard"/>
+
+		</android.support.v7.widget.ButtonBarLayout>
+
+		<TextView
+				style="@style/HeaderText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:padding="16dp"
+				android:text="Convert units (dp, px, sp)"/>
+
+		<!-- px to dp -->
+		<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp">
+			<EditText
+					android:id="@+id/edit_px_to_dp"
+					android:layout_width="48dp"
+					android:layout_height="wrap_content"
+					android:lines="1"
+					android:inputType="number"
+					android:hint="0"/>
+			<TextView
+					android:id="@+id/result_px_to_dp"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="16dp"
+					android:hint="@string/px_to_dp_text"/>
+		</LinearLayout>
+
+		<!-- dp to px -->
+		<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp">
+			<EditText
+					android:id="@+id/edit_dp_to_px"
+					android:layout_width="48dp"
+					android:layout_height="wrap_content"
+					android:lines="1"
+					android:inputType="number"
+					android:hint="0"/>
+			<TextView
+					android:id="@+id/result_dp_to_px"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="16dp"
+					android:hint="@string/dp_to_px_text"/>
+		</LinearLayout>
+
+		<!-- px to sp -->
+		<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp">
+			<EditText
+					android:id="@+id/edit_px_to_sp"
+					android:layout_width="48dp"
+					android:layout_height="wrap_content"
+					android:lines="1"
+					android:inputType="number"
+					android:hint="0"/>
+			<TextView
+					android:id="@+id/result_px_to_sp"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="16dp"
+					android:hint="@string/px_to_sp_text"/>
+		</LinearLayout>
+
+		<!-- sp to px -->
+		<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp">
+			<EditText
+					android:id="@+id/edit_sp_to_px"
+					android:layout_width="48dp"
+					android:layout_height="wrap_content"
+					android:lines="1"
+					android:inputType="number"
+					android:hint="0"/>
+			<TextView
+					android:id="@+id/result_sp_to_px"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="16dp"
+					android:hint="@string/sp_to_px_text"/>
+		</LinearLayout>
+
+	</LinearLayout>
+
+</ScrollView>

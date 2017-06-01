@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<item name="tag_loading_url" type="id"/>
+	<item name="tag_loading_uri" type="id"/>
+	<item name="tag_picasso_callback" type="id"/>
+	
+</resources>

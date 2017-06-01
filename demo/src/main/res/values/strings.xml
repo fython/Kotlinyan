@@ -1,0 +1,10 @@
+<resources>
+
+	<string name="app_name">Kotlinyan Demo</string>
+
+	<string name="px_to_dp_text">%1$f px == %2$f dp</string>
+	<string name="dp_to_px_text">%1$f dp == %2$f px</string>
+	<string name="px_to_sp_text">%1$f px == %2$f sp</string>
+	<string name="sp_to_px_text">%1$f sp == %2$f px</string>
+
+</resources>

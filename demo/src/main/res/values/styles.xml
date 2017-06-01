@@ -1,0 +1,18 @@
+<resources>
+
+	<style name="AppTheme" parent="BaseAppTheme">
+	</style>
+
+	<style name="BaseAppTheme" parent="Theme.AppCompat.Light">
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorAccent">@color/colorAccent</item>
+		<item name="colorControlNormal">@color/grey_material_control</item>
+		<item name="titleTextColor">@color/grey_material_control</item>
+	</style>
+
+	<style name="HeaderText" parent="TextAppearance.AppCompat.Button">
+		<item name="android:textColor">@color/colorAccent</item>
+	</style>
+
+</resources>

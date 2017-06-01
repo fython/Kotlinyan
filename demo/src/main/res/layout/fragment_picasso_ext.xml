@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+			  tools:context=".ViewExtDemoFragment">
+
+	<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+		<TextView
+				style="@style/HeaderText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:padding="16dp"
+				android:text="Lazy load image from internet"/>
+
+		<ImageView
+				android:id="@+id/image_lazy_load"
+				android:layout_width="match_parent"
+				android:layout_height="320dp"
+				android:scaleType="centerCrop"/>
+
+		<android.support.v7.widget.ButtonBarLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp">
+
+			<Button
+					android:id="@+id/btn_1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Load 1"
+					android:backgroundTint="#FFFFFF"/>
+
+			<Button
+					android:id="@+id/btn_2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="2"
+					android:backgroundTint="#FFFFFF"/>
+
+			<Button
+					android:id="@+id/btn_3"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="3"
+					android:backgroundTint="#FFFFFF"/>
+
+		</android.support.v7.widget.ButtonBarLayout>
+
+	</LinearLayout>
+
+</ScrollView>
