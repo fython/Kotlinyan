@@ -1,1 +1,1 @@
-include ':demo', ':library-common', ':library-picasso-support'
+include ':demo', ':kotlinyan-common', ':kotlinyan-picasso-support'

@@ -31,8 +31,8 @@ dependencies {
     compile 'com.android.support:support-v13:25.3.1'
     compile 'com.android.support:design:25.3.1'
     
-    compile project(':library-common')
-    compile project(':library-picasso-support')
+    compile project(':kotlinyan-common')
+    compile project(':kotlinyan-picasso-support')
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     compile "org.jetbrains.anko:anko:0.10.1"
 }
