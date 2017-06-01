@@ -1,5 +1,7 @@
 # Kotlinyan
 
+[![](https://jitpack.io/v/moe.feng/kotlinyan.svg)](https://jitpack.io/#moe.feng/kotlinyan)
+
 > Make Kotlin Android app development easier and more elegant
 >
 > 让 Kotlin Android 应用开发更加简单、优雅
@@ -21,6 +23,24 @@ Kotlinyan 是烧饼自己整理的一些比较常用的方法实现（Utils）�
 
 - `library-common` ： Android 常用方法扩展
 - `library-picasso-support` : Picasso 扩展，为 ImageView 提供更加简单的 Lazy Load 方法
+
+导入时，先在项目根目录下的 `build.gradle` 加入下列代码：
+```gradle
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+}
+```
+
+再在应用 Module 的 `build.gradle` 中按需声明要依赖的模块：
+```gradle
+dependencies {
+    compile 'moe.feng.kotlinyan:kotlinyan-common:v0.1.1'
+    compile 'moe.feng.kotlinyan:kotlinyan-picasso-support:v0.1.1'
+}
+```
 
 ## 使用方法
 
