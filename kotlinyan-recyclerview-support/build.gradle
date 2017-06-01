@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
@@ -6,11 +6,10 @@ android {
     buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
-        applicationId "moe.feng.kotlinyan"
-        minSdkVersion 21
+        minSdkVersion MIN_SDK_VERSION.toInteger()
         targetSdkVersion TARGET_SDK_VERSION.toInteger()
-        versionCode 1
-        versionName "1.0"
+        versionCode VERSION_CODE.toInteger()
+        versionName VERSION_NAME
     }
 
     buildTypes {
@@ -27,21 +26,9 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:support-v13:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    
-    compile project(':kotlinyan-common')
-    compile project(':kotlinyan-picasso-support')
-    compile project(':kotlinyan-recyclerview-support')
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile "org.jetbrains.anko:anko:0.10.1"
+    compile 'com.android.support:recyclerview-v7:25.3.1'
 }
 repositories {
     mavenCentral()
-}
-kotlin {
-    experimental {
-        coroutines "enable"
-    }
 }

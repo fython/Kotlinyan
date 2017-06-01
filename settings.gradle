@@ -1,1 +1,1 @@
-include ':demo', ':kotlinyan-common', ':kotlinyan-picasso-support'
+include ':demo', ':kotlinyan-common', ':kotlinyan-picasso-support', ':kotlinyan-recyclerview-support'

@@ -30,9 +30,7 @@ class MainActivity : AppCompatActivity(), AndroidExtensions, ColorExtensions {
 	override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 		menuInflater.inflate(R.menu.menu_main, menu)
 
-		/**
-		 * Tint menu items easily
-		 */
+		// Tint menu items easily
 		menu?.tintItemsColor(resources.color[R.color.grey_material_control])
 
 		return super.onCreateOptionsMenu(menu)
@@ -43,7 +41,8 @@ class MainActivity : AppCompatActivity(), AndroidExtensions, ColorExtensions {
 		val items = arrayOf<Pair<String, Fragment>>(
 				"ViewExtension" to ViewExtDemoFragment(),
 				"NetworkExtension" to NetworkExtDemoFragment(),
-				"PicassoExtension" to PicassoExtDemoFragment()
+				"PicassoExtension" to PicassoExtDemoFragment(),
+				"RecyclerView Extension" to RecyclerViewExtDemoFragment()
 		)
 
 		override fun getPageTitle(position: Int): CharSequence = items[position].first
