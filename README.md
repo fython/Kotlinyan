@@ -14,7 +14,7 @@ Kotlinyan is an Android utilities collection, written in Kotlin. Use Kotlin feat
 
 ## Import libarry
 
-Kotlinyan Library contains two modules now. There will be more functions and modules in the futrue.
+Kotlinyan Library contains some modules which have different types of functions.
 
 According to your requirement, introduce these modules to your project.
 
