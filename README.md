@@ -6,6 +6,9 @@
 
 [English Documentation (Sorry... It is unfinished)](README-EN.md)
 
+
+**这个库仍在开发中……暂时功能很少**
+
 ## 简介
 
 日常开发 Android 应用中，有些功能实现我们常常需要写许多代码，整理成一些 Utils 类。
