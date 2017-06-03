@@ -4,5 +4,8 @@
 	<item name="tag_loading_url" type="id"/>
 	<item name="tag_loading_uri" type="id"/>
 	<item name="tag_picasso_callback" type="id"/>
+	<item name="tag_picasso_placeholder_res" type="id"/>
+	<item name="tag_picasso_placeholder_drawable" type="id"/>
+	<item name="tag_picasso_request_transfomer" type="id"/>
 	
 </resources>

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.squareup.picasso.MemoryPolicy
 import moe.feng.kotlinyan.common.AndroidExtensions
 import moe.feng.kotlinyan.common.PicassoExtensions
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -18,6 +19,10 @@ class PicassoExtDemoFragment : Fragment(), PicassoExtensions, AndroidExtensions 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		val imageView = view[R.id.image_lazy_load] as ImageView
 		imageView.enableMaterialPicassoAnimation()
+		imageView.placeholderResource = R.mipmap.ic_launcher
+		imageView.picassoRequestTransform {
+			memoryPolicy(MemoryPolicy.NO_CACHE)
+		}
 		imageView.loadUrl = "http://wx1.sinaimg.cn/large/6f76b6dagy1fg5rg39y07j20r80hskbd.jpg"
 
 		view[R.id.btn_1].onClick {

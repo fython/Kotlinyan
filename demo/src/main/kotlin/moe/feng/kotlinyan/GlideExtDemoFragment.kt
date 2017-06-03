@@ -19,11 +19,11 @@ class GlideExtDemoFragment : Fragment(), GlideExtensions, AndroidExtensions {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		val imageView = view[R.id.image_lazy_load] as ImageView
 		imageView.placeholderResource = R.mipmap.ic_launcher
-		imageView.loadUrl = "http://wx1.sinaimg.cn/large/6f76b6dagy1fg5rg39y07j20r80hskbd.jpg"
 		imageView.glideBuilderTransform {
 			animate(android.R.anim.fade_in)
 			diskCacheStrategy(DiskCacheStrategy.ALL)
 		}
+		imageView.loadUrl = "http://wx1.sinaimg.cn/large/6f76b6dagy1fg5rg39y07j20r80hskbd.jpg"
 
 		view[R.id.btn_1].onClick {
 			imageView.loadUrl = "http://wx1.sinaimg.cn/large/6f76b6dagy1fg5rg39y07j20r80hskbd.jpg"
