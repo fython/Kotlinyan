@@ -21,9 +21,10 @@ Kotlinyan 是烧饼自己整理的一些比较常用的方法实现（Utils）�
 
 目前 Kotlinyan 库由三个模块组成，未来会添加更多的模块、功能，可根据自身需求选择引入到自己的开发项目中。
 
-- `library-common` ： Android 常用方法扩展
-- `library-picasso-support` : Picasso 扩展，为 ImageView 提供更加简单的 Lazy Load 方法
-- `library-recyclerview-support` : RecyclerView 扩展，提供了一个 onLoadMore 事件监听
+- `kotlinyan-common` ： Android 常用方法扩展
+- `kotlinyan-picasso-support` : [Picasso](https://github.com/square/picasso) 扩展，为 ImageView 提供更加简单的 Lazy Load 方法
+- `kotlinyan-glide-support` : [Glide](https://github.com/bumptech/glide) 扩展，同上
+- `kotlinyan-recyclerview-support` : RecyclerView 扩展，提供了一个 onLoadMore 事件监听
 
 导入时，先在项目根目录下的 `build.gradle` 加入下列代码：
 ```gradle
@@ -38,8 +39,10 @@ allprojects {
 再在应用 Module 的 `build.gradle` 中按需声明要依赖的模块：
 ```gradle
 dependencies {
-    compile 'moe.feng.kotlinyan:kotlinyan-common:v0.1.2'
-    compile 'moe.feng.kotlinyan:kotlinyan-picasso-support:v0.1.2'
+    compile 'moe.feng.kotlinyan:kotlinyan-common:latest-version'
+    compile 'moe.feng.kotlinyan:kotlinyan-picasso-support:latest-version'
+    compile 'moe.feng.kotlinyan:kotlinyan-glide-support:latest-version'
+    compile 'moe.feng.kotlinyan:kotlinyan-recyclerview-support:latest-version'
 }
 ```
 

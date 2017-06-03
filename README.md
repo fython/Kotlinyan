@@ -18,9 +18,10 @@ Kotlinyan Library contains some modules which have different types of functions.
 
 According to your requirement, introduce these modules to your project.
 
-- `library-common` ： Android Common Functions & Extensions
-- `library-picasso-support` : [Picasso](https://github.com/square/picasso) Extensions. Provide a easy way to lazy load images into ImageView.
-- `library-recyclerview-support` : RecyclerView Extensions. Provide OnLoadMoreListener
+- `kotlinyan-common` ： Android Common Functions & Extensions
+- `kotlinyan-picasso-support` : [Picasso](https://github.com/square/picasso) Extensions. Provide a easy way to lazy load images into ImageView.
+- `kotlinyan-glide-support` : [Glide](https://github.com/bumptech/glide) Extensions.
+- `kotlinyan-recyclerview-support` : RecyclerView Extensions. Provide OnLoadMoreListener
 
 First, add it in your root build.gradle at the end of repositories:
 
@@ -39,6 +40,8 @@ Add the dependency (according to your requirement):
 dependencies {
     compile 'moe.feng.kotlinyan:kotlinyan-common:latest-version'
     compile 'moe.feng.kotlinyan:kotlinyan-picasso-support:latest-version'
+    compile 'moe.feng.kotlinyan:kotlinyan-glide-support:latest-version'
+    compile 'moe.feng.kotlinyan:kotlinyan-recyclerview-support:latest-version'
 }
 ```
 
