@@ -40,9 +40,10 @@ class MainActivity : AppCompatActivity(), AndroidExtensions, ColorExtensions {
 
 		val items = arrayOf<Pair<String, Fragment>>(
 				"ViewExtension" to ViewExtDemoFragment(),
-				"NetworkExtension" to NetworkExtDemoFragment(),
-				"PicassoExtension" to PicassoExtDemoFragment(),
-				"RecyclerView Extension" to RecyclerViewExtDemoFragment()
+				"Network" to NetworkExtDemoFragment(),
+				"Picasso" to PicassoExtDemoFragment(),
+				"Glide" to GlideExtDemoFragment(),
+				"RecyclerView" to RecyclerViewExtDemoFragment()
 		)
 
 		override fun getPageTitle(position: Int): CharSequence = items[position].first

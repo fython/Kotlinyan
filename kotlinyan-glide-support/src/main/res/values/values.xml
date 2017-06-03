@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<item name="tag_loading_url" type="id"/>
+	<item name="tag_loading_uri" type="id"/>
+	<item name="tag_request_listener" type="id"/>
+	<item name="tag_glide_builder_transformer" type="id"/>
+	<item name="tag_glide_placeholder_res" type="id"/>
+	<item name="tag_glide_placeholder_drawable" type="id"/>
+	
+</resources>
