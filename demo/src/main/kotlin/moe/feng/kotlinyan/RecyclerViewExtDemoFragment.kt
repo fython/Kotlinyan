@@ -3,6 +3,7 @@ package moe.feng.kotlinyan
 import android.app.Fragment
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -20,7 +21,7 @@ class RecyclerViewExtDemoFragment : Fragment(), RecyclerViewExtensions, AndroidE
 	lateinit var refreshLayout : SwipeRefreshLayout
 	lateinit var recyclerView : RecyclerView
 
-	private val adapter = SimpleAdapter(20)
+	private val adapter = SimpleAdapter(30)
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedInstanceState: Bundle?): View
 		= inflater.inflate(R.layout.fragment_recyclerview_ext, container, false)
@@ -40,7 +41,11 @@ class RecyclerViewExtDemoFragment : Fragment(), RecyclerViewExtensions, AndroidE
 				}
 			}
 		}
+		recyclerView.layoutManager = GridLayoutManager(recyclerView.context, 3, GridLayoutManager.VERTICAL, false)
 		recyclerView.adapter = adapter
+
+		// Grid SpanSizeLookUp
+		recyclerView.applySpanSize { it % 2 + 1 }
 
 		// Load more callback
 		recyclerView.onLoadMore {
