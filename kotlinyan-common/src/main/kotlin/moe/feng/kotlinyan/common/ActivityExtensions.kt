@@ -83,6 +83,31 @@ interface ActivityExtensions {
 	}
 
 	/**
+	 * Run codes with permission safely. (No rationale)
+	 * @param permission Manifest.permission.XXX
+	 * @param callback If permission is granted, then it will be called
+	 * @return If it is denied (Lower than M), return false
+	 */
+	fun Activity.runWithPermissionNoRationale(permission: String, callback: () -> Unit) : Boolean {
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+			if (checkPermission(permission, android.os.Process.myPid(), Process.myUid())
+					== PackageManager.PERMISSION_GRANTED) {
+				callback()
+			} else {
+				return false
+			}
+		}
+		if (checkPermission(permission, android.os.Process.myPid(), Process.myUid())
+				== PackageManager.PERMISSION_GRANTED) {
+			callback()
+		} else {
+			activityPermissionsCallbacks["$localClassName#$permission"] = callback
+			requestPermissions(arrayOf(permission), REQUEST_PERMISSION_CODE)
+		}
+		return true
+	}
+
+	/**
 	 * If user accept permission rationale, you can call this continue to ask for permission.
 	 * @param permission Manifest.permission.XXX
 	 */
