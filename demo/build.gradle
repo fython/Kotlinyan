@@ -9,8 +9,8 @@ android {
         applicationId "moe.feng.kotlinyan"
         minSdkVersion 21
         targetSdkVersion TARGET_SDK_VERSION.toInteger()
-        versionCode 1
-        versionName "1.0"
+        versionCode VERSION_CODE.toInteger()
+        versionName VERSION_NAME
     }
 
     buildTypes {
