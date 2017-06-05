@@ -2,10 +2,13 @@ package moe.feng.kotlinyan.common
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
+import kotlin.concurrent.thread
 
 interface ViewExtensions {
 
@@ -134,6 +137,13 @@ interface ViewExtensions {
 				View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
 		this.layout(0, 0, this.measuredWidth, this.measuredHeight)
 		return this.takeScreenshot()
+	}
+
+	fun ImageView.loadBitmap(getBitmap : () -> Bitmap) {
+		thread {
+			val result = getBitmap()
+			Handler(context.mainLooper).post { setImageBitmap(result) }
+		}
 	}
 
 }
