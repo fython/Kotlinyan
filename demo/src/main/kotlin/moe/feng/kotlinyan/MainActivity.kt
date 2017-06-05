@@ -1,5 +1,7 @@
 package moe.feng.kotlinyan
 
+import android.Manifest
+import android.app.AlertDialog
 import android.app.Fragment
 import android.app.FragmentManager
 import android.os.Bundle
@@ -8,9 +10,11 @@ import android.support.v13.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
+import android.view.MenuItem
 import moe.feng.kotlinyan.common.AndroidExtensions
 import moe.feng.kotlinyan.common.ColorExtensions
 import org.jetbrains.anko.find
+import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity(), AndroidExtensions, ColorExtensions {
 
@@ -34,6 +38,36 @@ class MainActivity : AppCompatActivity(), AndroidExtensions, ColorExtensions {
 		menu?.tintItemsColor(resources.color[R.color.grey_material_control])
 
 		return super.onCreateOptionsMenu(menu)
+	}
+
+	override fun onOptionsItemSelected(item: MenuItem): Boolean {
+		when (item.itemId) {
+			R.id.action_test_permission -> {
+				// Permission Utils Sample
+				runWithPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) {
+					// Do something...
+					toast("Permission granted")
+				} ?: run {
+					toast("Permission should show rationale.")
+					AlertDialog.Builder(this)
+							.setTitle("Permission Denied")
+							.setMessage("Without storage permission, you cannot read or save files.")
+							.setPositiveButton("Request") {
+								_, _ -> continueRunWithPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+							}
+							.setNegativeButton(android.R.string.cancel, {_, _ -> })
+							.show()
+				}
+			}
+		}
+		return super.onOptionsItemSelected(item)
+	}
+
+	override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+		handleOnRequestPermissionsResult(requestCode, permissions, grantResults) {
+			deniedPermission -> toast("onPermissionDenied: $deniedPermission")
+		}
 	}
 
 	private class PagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
