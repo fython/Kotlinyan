@@ -139,7 +139,7 @@ interface ViewExtensions {
 		return this.takeScreenshot()
 	}
 
-	fun ImageView.loadBitmap(getBitmap : () -> Bitmap) {
+	fun ImageView.loadBitmap(getBitmap : () -> Bitmap?) {
 		thread {
 			val result = getBitmap()
 			Handler(context.mainLooper).post { setImageBitmap(result) }
