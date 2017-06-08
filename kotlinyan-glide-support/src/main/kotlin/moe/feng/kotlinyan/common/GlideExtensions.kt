@@ -11,8 +11,8 @@ import java.io.File
 
 interface GlideExtensions {
 
-	var ImageView.placeholderResource : Int
-		get() { return this.getTag(R.id.tag_glide_placeholder_res) as Int }
+	var ImageView.placeholderResource : Int?
+		get() { return this.getTag(R.id.tag_glide_placeholder_res) as? Int }
 		set(value) {
 			this.setTag(R.id.tag_glide_placeholder_drawable, null)
 			this.setTag(R.id.tag_glide_placeholder_res, value)
@@ -58,7 +58,7 @@ interface GlideExtensions {
 	}
 
 	private fun <A, B, C, D> ImageView.makeGlideRequest(request: GenericRequestBuilder<A, B, C, D>) {
-		if (placeholderResource != 0) request.placeholder(placeholderResource)
+		if (placeholderResource != null && placeholderResource != 0) request.placeholder(placeholderResource!!)
 		if (placeholder != null) request.placeholder(placeholder)
 		if (glideListener != null) request.listener(glideListener as RequestListener<A, D>)
 		val transformer = getTag(R.id.tag_glide_builder_transformer) as? GenericRequestBuilder<A, B, C, D>.() -> Unit

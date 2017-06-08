@@ -15,8 +15,8 @@ interface PicassoExtensions {
 		private val ANIMATION_DURATION : Int = 1000
 	}
 
-	var ImageView.placeholderResource : Int
-		get() { return this.getTag(R.id.tag_picasso_placeholder_res) as Int }
+	var ImageView.placeholderResource : Int?
+		get() { return this.getTag(R.id.tag_picasso_placeholder_res) as? Int }
 		set(value) {
 			this.setTag(R.id.tag_picasso_placeholder_drawable, null)
 			this.setTag(R.id.tag_picasso_placeholder_res, value)
@@ -60,7 +60,7 @@ interface PicassoExtensions {
 	}
 
 	private fun ImageView.makePicassoRequest(request: RequestCreator) {
-		if (placeholderResource != 0) request.placeholder(placeholderResource)
+		if (placeholderResource != null && placeholderResource != 0) request.placeholder(placeholderResource!!)
 		if (placeholder != null) request.placeholder(placeholder)
 		val transformer = getTag(R.id.tag_picasso_request_transfomer) as? RequestCreator.() -> Unit
 		transformer?.let { it(request) }
