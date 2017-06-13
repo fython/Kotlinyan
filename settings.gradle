@@ -1,5 +1,6 @@
 include ':demo',
         ':kotlinyan-common',
+        ':kotlinyan-appcompat-support',
         ':kotlinyan-picasso-support',
         ':kotlinyan-glide-support',
         ':kotlinyan-recyclerview-support'
