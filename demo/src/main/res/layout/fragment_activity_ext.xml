@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-			  tools:context=".ActivityExtDemoFragment">
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/root_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+			tools:context=".ActivityExtDemoFragment">
 
 	<LinearLayout
 			android:orientation="vertical"
@@ -18,11 +19,32 @@
 				android:text="Build AlertDialog"/>
 
 		<Button
-				android:id="@+id/btn_build_and_show"
+				android:id="@+id/btn_alertdialog_native"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="Build &amp; show"
-				android:backgroundTint="#FFFFFF"/>
+				android:layout_marginStart="16dp"
+				android:text="android.app.AlertDialog"/>
+
+		<Button
+				android:id="@+id/btn_alertdialog_v7"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:text="android.support.v7.app.AlertDialog"/>
+
+		<TextView
+				style="@style/HeaderText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:padding="16dp"
+				android:text="Snackbar"/>
+
+		<Button
+				android:id="@+id/btn_show_snackbar"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:text="Show Snackbar"/>
 
 	</LinearLayout>
 
