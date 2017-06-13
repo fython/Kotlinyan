@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+			  tools:context=".ActivityExtDemoFragment">
+
+	<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+		<TextView
+				style="@style/HeaderText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:padding="16dp"
+				android:text="Build AlertDialog"/>
+
+		<Button
+				android:id="@+id/btn_build_and_show"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Build &amp; show"
+				android:backgroundTint="#FFFFFF"/>
+
+	</LinearLayout>
+
+</ScrollView>

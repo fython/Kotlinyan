@@ -1,7 +1,6 @@
 package moe.feng.kotlinyan
 
 import android.Manifest
-import android.app.AlertDialog
 import android.app.Fragment
 import android.app.FragmentManager
 import android.os.Bundle
@@ -49,14 +48,14 @@ class MainActivity : AppCompatActivity(), AndroidExtensions, ColorExtensions {
 					toast("Permission granted")
 				} ?: run {
 					toast("Permission should show rationale.")
-					AlertDialog.Builder(this)
-							.setTitle("Permission Denied")
-							.setMessage("Without storage permission, you cannot read or save files.")
-							.setPositiveButton("Request") {
-								_, _ -> continueRunWithPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-							}
-							.setNegativeButton(android.R.string.cancel, {_, _ -> })
-							.show()
+					buildAlertDialog {
+						title = "Permission Denied"
+						message = "Without storage permission, you cannot read or save files."
+						positiveButton("Request") {
+							_, _ -> continueRunWithPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+						}
+						negativeButton(android.R.string.cancel) { _, _ -> }
+					}.show()
 				}
 			}
 		}
@@ -74,6 +73,7 @@ class MainActivity : AppCompatActivity(), AndroidExtensions, ColorExtensions {
 
 		val items = arrayOf<Pair<String, Fragment>>(
 				"ViewExtension" to ViewExtDemoFragment(),
+				"Activity" to ActivityExtDemoFragment(),
 				"Network" to NetworkExtDemoFragment(),
 				"Picasso" to PicassoExtDemoFragment(),
 				"Glide" to GlideExtDemoFragment(),
