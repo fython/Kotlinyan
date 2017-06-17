@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable
 import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.AdapterView
+import android.widget.Button
 
 interface AppCompatExtensions {
 
@@ -106,5 +107,14 @@ interface AppCompatExtensions {
 	fun AlertDialog.Builder.neutralButton(text: String, onClick: (DialogInterface, Int) -> Unit) {
 		setNeutralButton(text, onClick)
 	}
+
+	val AlertDialog.positiveButton : Button
+		get() = this.getButton(DialogInterface.BUTTON_POSITIVE)
+
+	val AlertDialog.negativeButton : Button
+		get() = this.getButton(DialogInterface.BUTTON_NEGATIVE)
+
+	val AlertDialog.neutralButton : Button
+		get() = this.getButton(DialogInterface.BUTTON_NEUTRAL)
 
 }

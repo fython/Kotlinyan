@@ -28,6 +28,8 @@ class ActivityExtDemoFragment : Fragment(), AndroidExtensions, AppCompatExtensio
 				negativeButton(android.R.string.cancel) { _, _ ->
 					toast("NegativeButton Clicked!")
 				}
+			}.afterViewCreated {
+				it.positiveButton.filterTouchesWhenObscured = true
 			}.show()
 		}
 		view[R.id.btn_alertdialog_v7].onClick {
@@ -47,6 +49,8 @@ class ActivityExtDemoFragment : Fragment(), AndroidExtensions, AppCompatExtensio
 				onDismiss = {
 
 				}
+			}.afterViewCreated {
+				it.positiveButton.filterTouchesWhenObscured = true
 			}.show()
 		}
 		view[R.id.btn_show_snackbar].onClick {

@@ -3,6 +3,7 @@ package moe.feng.kotlinyan.common
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.DialogInterface
 import android.content.pm.PackageManager
 import android.graphics.Color
@@ -14,6 +15,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
+import android.widget.Button
 
 @SuppressLint("NewApi")
 interface ActivityExtensions {
@@ -233,6 +235,20 @@ interface ActivityExtensions {
 	fun AlertDialog.Builder.neutralButton(text: String, onClick: (DialogInterface, Int) -> Unit) {
 		setNeutralButton(text, onClick)
 	}
+
+	fun <T : Dialog> T.afterViewCreated(block: (T) -> Unit) : T {
+		this.setOnShowListener { block(this) }
+		return this
+	}
+
+	val AlertDialog.positiveButton : Button
+		get() = this.getButton(DialogInterface.BUTTON_POSITIVE)
+
+	val AlertDialog.negativeButton : Button
+		get() = this.getButton(DialogInterface.BUTTON_NEGATIVE)
+
+	val AlertDialog.neutralButton : Button
+		get() = this.getButton(DialogInterface.BUTTON_NEUTRAL)
 
 	companion object {
 

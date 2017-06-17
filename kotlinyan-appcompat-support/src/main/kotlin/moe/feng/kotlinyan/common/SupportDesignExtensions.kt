@@ -41,7 +41,7 @@ interface SupportDesignExtensions {
 			} else if (actionTextColorStateList != null) {
 				snackbar.setActionTextColor(actionTextColorStateList!!)
 			}
-			
+
 			snackbar.duration = duration
 			return snackbar
 		}
