@@ -18,7 +18,7 @@ import android.widget.AdapterView
 import android.widget.Button
 
 @SuppressLint("NewApi")
-interface ActivityExtensions {
+interface ActivityExtensions: ServiceExtensions {
 
 	/**
 	 * If function is supported, call it safely.
