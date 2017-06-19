@@ -1,8 +1,10 @@
 package moe.feng.kotlinyan
 
 import android.app.Fragment
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +15,12 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.toast
 
 class ActivityExtDemoFragment : Fragment(), AndroidExtensions, AppCompatExtensions, SupportDesignExtensions {
+
+	companion object {
+
+		val TAG = ActivityExtDemoFragment::class.simpleName
+
+	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedInstanceState: Bundle?): View
 		= inflater.inflate(R.layout.fragment_activity_ext, container, false)
@@ -61,6 +69,13 @@ class ActivityExtDemoFragment : Fragment(), AndroidExtensions, AppCompatExtensio
 					toast("OK!")
 				}
 			}.show()
+		}
+		view[R.id.btn_test_intent].onClick {
+			val intent = Intent()
+			intent["intExtra"] = 15
+			intent["stringExtra"] = "Hello"
+			Log.i(TAG, intent["intExtra"]?.asInt()?.toString())
+			Log.i(TAG, intent["stringExtra"]?.asString())
 		}
 	}
 

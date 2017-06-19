@@ -46,6 +46,27 @@
 				android:layout_marginStart="16dp"
 				android:text="Show Snackbar"/>
 
+		<TextView
+				style="@style/HeaderText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:padding="16dp"
+				android:text="Intent/Extra Getter and Setter (AndroidExtensions)"/>
+
+		<Button
+				android:id="@+id/btn_test_intent"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:text="Test Intent (See log for results)"/>
+
+		<Button
+				android:id="@+id/btn_test_bundle"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:text="Test Bundle (See log for results)"/>
+
 	</LinearLayout>
 
 </ScrollView>
