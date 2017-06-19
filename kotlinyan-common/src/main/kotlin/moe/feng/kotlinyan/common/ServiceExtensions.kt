@@ -35,6 +35,7 @@ import android.nfc.NfcManager
 import android.os.*
 import android.os.storage.StorageManager
 import android.print.PrintManager
+import android.support.annotation.RequiresApi
 import android.telecom.TelecomManager
 import android.telephony.CarrierConfigManager
 import android.telephony.SubscriptionManager
@@ -165,6 +166,8 @@ interface ServiceExtensions {
 
 	val Context.systemServices: Services get() = Services(this)
 
+	// WindowManager Extensions
+
 	val WindowManager.screenHeight: Int
 		get() = DisplayMetrics().apply { defaultDisplay.getRealMetrics(this) }.heightPixels
 
@@ -212,6 +215,23 @@ interface ServiceExtensions {
 			}
 			return dpi
 		}
+
+	// BatteryManager Extensions
+
+	val BatteryManager.capacity: Int
+		@RequiresApi(Build.VERSION_CODES.LOLLIPOP) get() = getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
+
+	val BatteryManager.chargeCounter: Int
+		@RequiresApi(Build.VERSION_CODES.LOLLIPOP) get() = getIntProperty(BatteryManager.BATTERY_PROPERTY_CHARGE_COUNTER)
+
+	val BatteryManager.currentAverage: Int
+		@RequiresApi(Build.VERSION_CODES.LOLLIPOP) get() = getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_AVERAGE)
+
+	val BatteryManager.currentNow: Int
+		@RequiresApi(Build.VERSION_CODES.LOLLIPOP) get() = getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_NOW)
+
+	val BatteryManager.energyCounter: Long
+		@RequiresApi(Build.VERSION_CODES.LOLLIPOP) get() = getLongProperty(BatteryManager.BATTERY_PROPERTY_ENERGY_COUNTER)
 
 	class Services(private val context: Context) {
 
