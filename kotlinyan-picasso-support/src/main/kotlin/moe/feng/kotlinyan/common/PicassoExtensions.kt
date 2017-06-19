@@ -31,7 +31,7 @@ interface PicassoExtensions {
 		}
 
 	var ImageView.picassoCallback : Callback?
-		get() { return this.getTag(R.id.tag_picasso_callback) as Callback }
+		get() { return this.getTag(R.id.tag_picasso_callback) as? Callback }
 		set(value) { this.setTag(R.id.tag_picasso_callback, value) }
 
 	var ImageView.loadUrl : String
