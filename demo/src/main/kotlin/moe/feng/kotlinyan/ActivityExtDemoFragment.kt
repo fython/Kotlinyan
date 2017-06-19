@@ -74,8 +74,20 @@ class ActivityExtDemoFragment : Fragment(), AndroidExtensions, AppCompatExtensio
 			val intent = Intent()
 			intent["intExtra"] = 15
 			intent["stringExtra"] = "Hello"
-			Log.i(TAG, intent["intExtra"]?.asInt()?.toString())
-			Log.i(TAG, intent["stringExtra"]?.asString())
+			Log.i(TAG, "intExtra=" + (intent["intExtra"]?.asInt() ?: -1))
+			Log.i(TAG, "stringExtra=" + (intent["stringExtra"]?.asString() ?: "defaultValue"))
+			Log.i(TAG, "nonExistExtra=" + (intent["nonExistExtra"]?.asString() ?: "defaultValue"))
+		}
+		view[R.id.btn_test_bundle].onClick {
+			val bundle = Bundle()
+			bundle["int"] = 18
+			bundle["string"] = "Nyanyanyanyan"
+			bundle["stringArray"] = arrayOf("test", "lalala")
+			Log.i(TAG, "intExtra=" + (bundle["int"] as? Int ?: -1))
+			Log.i(TAG, "string=" + (bundle["string"] as? String ?: "defaultValue"))
+			Log.i(TAG, "stringArray=" +
+					((bundle["stringArray"] as? Array<String>)?.reduce { a, b -> "$a,$b" } ?: "defaultValue"))
+			Log.i(TAG, "nonExist=" + (bundle["nonExist"] as? String ?: "defaultValue"))
 		}
 	}
 

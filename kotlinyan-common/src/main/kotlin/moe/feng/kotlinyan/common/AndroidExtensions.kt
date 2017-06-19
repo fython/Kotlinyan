@@ -55,30 +55,25 @@ interface AndroidExtensions : ActivityExtensions, ViewExtensions, ResourcesExten
 
 		fun asCharSequence(): CharSequence = intent.getCharSequenceExtra(key)
 
-		fun asInt(defValue: Int): Int = intent.getIntExtra(key, defValue)
+		fun asInt(): Int = intent.getIntExtra(key, 0)
 
-		fun asInt(): Int? {
-			val value = intent.getIntExtra(key, Int.MIN_VALUE)
-			return if (value != Int.MIN_VALUE) value else null
-		}
+		fun asBoolean(): Boolean = intent.getBooleanExtra(key, false)
 
-		fun asBoolean(defValue: Boolean = false): Boolean = intent.getBooleanExtra(key, defValue)
+		fun asChar(): Char = intent.getCharExtra(key, ' ')
 
-		fun asChar(defValue: Char): Char = intent.getCharExtra(key, defValue)
-
-		fun asByte(defValue: Byte = 0): Byte = intent.getByteExtra(key, defValue)
+		fun asByte(): Byte = intent.getByteExtra(key, 0)
 
 		fun asByteArray(): ByteArray = intent.getByteArrayExtra(key)
 
 		fun asBundle(): Bundle = intent.getBundleExtra(key)
 
-		fun asDouble(defValue: Double = .0): Double = intent.getDoubleExtra(key, defValue)
+		fun asDouble(): Double = intent.getDoubleExtra(key, .0)
 
-		fun asFloat(defValue: Float = 0F): Float = intent.getFloatExtra(key, defValue)
+		fun asFloat(): Float = intent.getFloatExtra(key, 0F)
 
-		fun asLong(defValue: Long = 0): Long = intent.getLongExtra(key, defValue)
+		fun asLong(): Long = intent.getLongExtra(key, 0)
 
-		fun asShort(defValue: Short = 0): Short = intent.getShortExtra(key, defValue)
+		fun asShort(): Short = intent.getShortExtra(key, 0)
 
 		fun asBooleanArray(): BooleanArray = intent.getBooleanArrayExtra(key)
 
