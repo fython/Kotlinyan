@@ -46,6 +46,72 @@ interface AndroidExtensions : ActivityExtensions, ViewExtensions, ResourcesExten
 		}
 	}
 
+	operator fun Intent.get(key: String) : IntentExtraGetter?
+			= if (hasExtra(key)) IntentExtraGetter(this, key) else null
+
+	class IntentExtraGetter internal constructor(private val intent: Intent, val key: String) {
+
+		fun asString(): String = intent.getStringExtra(key)
+
+		fun asCharSequence(): CharSequence = intent.getCharSequenceExtra(key)
+
+		fun asInt(defValue: Int): Int = intent.getIntExtra(key, defValue)
+
+		fun asInt(): Int? {
+			val value = intent.getIntExtra(key, Int.MIN_VALUE)
+			return if (value != Int.MIN_VALUE) value else null
+		}
+
+		fun asBoolean(defValue: Boolean = false): Boolean = intent.getBooleanExtra(key, defValue)
+
+		fun asChar(defValue: Char): Char = intent.getCharExtra(key, defValue)
+
+		fun asByte(defValue: Byte = 0): Byte = intent.getByteExtra(key, defValue)
+
+		fun asByteArray(): ByteArray = intent.getByteArrayExtra(key)
+
+		fun asBundle(): Bundle = intent.getBundleExtra(key)
+
+		fun asDouble(defValue: Double = .0): Double = intent.getDoubleExtra(key, defValue)
+
+		fun asFloat(defValue: Float = 0F): Float = intent.getFloatExtra(key, defValue)
+
+		fun asLong(defValue: Long = 0): Long = intent.getLongExtra(key, defValue)
+
+		fun asShort(defValue: Short = 0): Short = intent.getShortExtra(key, defValue)
+
+		fun asBooleanArray(): BooleanArray = intent.getBooleanArrayExtra(key)
+
+		fun asCharArray(): CharArray = intent.getCharArrayExtra(key)
+
+		fun asDoubleArray(): DoubleArray = intent.getDoubleArrayExtra(key)
+
+		fun asIntArray(): IntArray = intent.getIntArrayExtra(key)
+
+		fun asFloatArray(): FloatArray = intent.getFloatArrayExtra(key)
+
+		fun asLongArray(): LongArray = intent.getLongArrayExtra(key)
+
+		fun asShortArray(): ShortArray = intent.getShortArrayExtra(key)
+
+		fun asCharSequenceArray(): Array<out CharSequence> = intent.getCharSequenceArrayExtra(key)
+
+		fun <T : Parcelable> asParcelable(): T = intent.getParcelableExtra<T>(key)
+
+		fun asSerializable(): Serializable = intent.getSerializableExtra(key)
+
+		fun asParacelableArray(): Array<out Parcelable> = intent.getParcelableArrayExtra(key)
+
+		fun <T : Parcelable> asParacelableList(): java.util.ArrayList<T> = intent.getParcelableArrayListExtra<T>(key)
+
+		fun asCharSequenceList(): java.util.ArrayList<CharSequence> = intent.getCharSequenceArrayListExtra(key)
+
+		fun asIntList(): java.util.ArrayList<Int> = intent.getIntegerArrayListExtra(key)
+
+		fun asStringList(): java.util.ArrayList<String> = intent.getStringArrayListExtra(key)
+
+	}
+
 	@SuppressLint("NewApi")
 	operator fun Bundle.set(key: String, value: Any) {
 		when (value) {
