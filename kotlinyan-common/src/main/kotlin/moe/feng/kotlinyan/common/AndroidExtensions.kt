@@ -12,7 +12,7 @@ import java.io.Serializable
 
 interface AndroidExtensions : ActivityExtensions, ViewExtensions, ResourcesExtensions, FragmentExtensions {
 
-	operator fun Intent.set(key: String, value: Any) {
+	operator fun Intent.set(key: String, value: Any?) {
 		when (value) {
 			is Int -> putExtra(key, value)
 			is String -> putExtra(key, value)
@@ -42,6 +42,7 @@ interface AndroidExtensions : ActivityExtensions, ViewExtensions, ResourcesExten
 				is String -> putStringArrayListExtra(key, value as java.util.ArrayList<String>)
 				is Parcelable -> putParcelableArrayListExtra(key, value as java.util.ArrayList<Parcelable>)
 			}
+			null -> {} // Ignore null pointer
 			else -> throw UnsupportedOperationException("Unsupported type ${value.javaClass.name} in params")
 		}
 	}
