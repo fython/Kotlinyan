@@ -8,8 +8,7 @@
 
 [English Documentation (Sorry... It hasn't finished yet)](README-EN.md)
 
-
-**这个库仍在开发中……暂时功能很少**
+[Wiki/使用文档](https://github.com/fython/Kotlinyan/wiki)
 
 ## 简介
 
@@ -43,6 +42,7 @@ dependencies {
     compile 'moe.feng.kotlinyan:kotlinyan-picasso-support:latest-version'
     compile 'moe.feng.kotlinyan:kotlinyan-glide-support:latest-version'
     compile 'moe.feng.kotlinyan:kotlinyan-recyclerview-support:latest-version'
+    compile 'moe.feng.kotlinyan:kotlinyan-appcompat-support:latest-version'
 }
 ```
 
