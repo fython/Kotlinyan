@@ -5,6 +5,12 @@ import android.app.Fragment
 
 interface FragmentExtensions: ActivityExtensions {
 
+	/**
+	 * Build AlertDialog in Fragment
+	 *
+	 * @param process The process of building AlertDialog
+	 * @see android.app.AlertDialog
+	 */
 	fun Fragment.buildAlertDialog(process: AlertDialog.Builder.() -> Unit) = activity.buildAlertDialog(process)
 
 }

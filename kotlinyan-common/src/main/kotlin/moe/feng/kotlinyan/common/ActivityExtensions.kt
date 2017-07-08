@@ -10,7 +10,6 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Process
-import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -22,6 +21,10 @@ interface ActivityExtensions: ServiceExtensions {
 
 	/**
 	 * If function is supported, call it safely.
+	 *
+	 * @param minSDK The minimum supported SDK
+	 * @param block Methods
+	 * @return Only if not supported, return null
 	 */
 	fun ifSupportSDK(minSDK: Int, block: () -> Unit) : (() -> Unit)? {
 		if (Build.VERSION.SDK_INT >= minSDK) {
@@ -45,6 +48,8 @@ interface ActivityExtensions: ServiceExtensions {
 
 	/**
 	 * Tint color for a menu item
+	 *
+	 * @param color Color value
 	 */
 	fun MenuItem.tintColor(color : Int) {
 		this.icon?.setTint(color)
@@ -52,6 +57,8 @@ interface ActivityExtensions: ServiceExtensions {
 
 	/**
 	 * Tint color for all menu items
+	 *
+	 * @param color Color value
 	 */
 	fun Menu.tintItemsColor(color : Int) {
 		for (i in 0..size() - 1) getItem(i).tintColor(color)
@@ -130,6 +137,11 @@ interface ActivityExtensions: ServiceExtensions {
 	/**
 	 * If you use Activity.runWithPermissions to request permission,
 	 * please call this method in onRequestPermissionsResult method of your activity
+	 *
+	 * @param requestCode The result of request code
+	 * @param permissions Permissions string array
+	 * @param grantResults Permissions result array
+	 * @param deniedCallback Denied permission callback
 	 */
 	fun Activity.handleOnRequestPermissionsResult(requestCode: Int,
 	                                              permissions: Array<out String>,
@@ -146,6 +158,12 @@ interface ActivityExtensions: ServiceExtensions {
 
 	// Kotlin-style builders
 
+	/**
+	 * Build AlertDialog in Activity
+	 *
+	 * @param process The process of building AlertDialog
+	 * @see android.app.AlertDialog
+	 */
 	fun Activity.buildAlertDialog(process: AlertDialog.Builder.() -> Unit) : AlertDialog {
 		val builder = AlertDialog.Builder(this)
 		builder.process()
@@ -212,26 +230,80 @@ interface ActivityExtensions: ServiceExtensions {
 		get() { throw NoSuchMethodException("View res id getter is not supported")}
 		set(value) { this.setView(value) }
 
+	/**
+	 * Set ok button for AlertDialog
+	 *
+	 * @param onClick onClick callback
+	 */
+	fun AlertDialog.Builder.okButton(onClick: (DialogInterface, Int) -> Unit = {_, _ ->}) {
+		setPositiveButton(android.R.string.ok, onClick)
+	}
+
+	/**
+	 * Set cancel button for AlertDialog
+	 *
+	 * @param onClick onClick callback
+	 */
+	fun AlertDialog.Builder.cancelButton(onClick: (DialogInterface, Int) -> Unit = {_, _ ->}) {
+		setNegativeButton(android.R.string.cancel, onClick)
+	}
+
+	/**
+	 * Set positive button for AlertDialog
+	 *
+	 * @param textId Text resource id
+	 * @param onClick onClick callback
+	 */
 	fun AlertDialog.Builder.positiveButton(textId: Int, onClick: (DialogInterface, Int) -> Unit) {
 		setPositiveButton(textId, onClick)
 	}
 
+	/**
+	 * Set positive button for AlertDialog
+	 *
+	 * @param text Text string
+	 * @param onClick onClick callback
+	 */
 	fun AlertDialog.Builder.positiveButton(text: String, onClick: (DialogInterface, Int) -> Unit) {
 		setPositiveButton(text, onClick)
 	}
 
+	/**
+	 * Set negative button for AlertDialog
+	 *
+	 * @param textId Text resource id
+	 * @param onClick onClick callback
+	 */
 	fun AlertDialog.Builder.negativeButton(textId: Int, onClick: (DialogInterface, Int) -> Unit) {
 		setNegativeButton(textId, onClick)
 	}
 
+	/**
+	 * Set negative button for AlertDialog
+	 *
+	 * @param text Text string
+	 * @param onClick onClick callback
+	 */
 	fun AlertDialog.Builder.negativeButton(text: String, onClick: (DialogInterface, Int) -> Unit) {
 		setNegativeButton(text, onClick)
 	}
 
+	/**
+	 * Set neutral button for AlertDialog
+	 *
+	 * @param textId Text resource id
+	 * @param onClick onClick callback
+	 */
 	fun AlertDialog.Builder.neutralButton(textId: Int, onClick: (DialogInterface, Int) -> Unit) {
 		setNeutralButton(textId, onClick)
 	}
 
+	/**
+	 * Set neutral button for AlertDialog
+	 *
+	 * @param text Text string
+	 * @param onClick onClick callback
+	 */
 	fun AlertDialog.Builder.neutralButton(text: String, onClick: (DialogInterface, Int) -> Unit) {
 		setNeutralButton(text, onClick)
 	}
