@@ -6,7 +6,7 @@
 >
 > 让 Kotlin Android 应用开发更加简单、优雅
 
-[**中文文档**](README-CN.md)
+[**中文文档**](README-CN.md) [Wiki/API Documentation](https://github.com/fython/Kotlinyan/wiki)
 
 ## Introduction
 
