@@ -9,6 +9,14 @@ import com.squareup.picasso.RequestCreator
 import moe.feng.kotlinyan.common.picasso.R
 import java.io.File
 
+/**
+ * Picasso Extensions
+ *
+ * Help developers use Picasso library to load image async.
+ *
+ * @see com.squareup.picasso.Picasso
+ * @see <a href="https://github.com/fython/Kotlinyan/wiki/PicassoExtensions">PicassoExtensions Wiki</a>
+ */
 interface PicassoExtensions {
 
 	companion object {
@@ -34,27 +42,35 @@ interface PicassoExtensions {
 		get() { return this.getTag(R.id.tag_picasso_callback) as? Callback }
 		set(value) { this.setTag(R.id.tag_picasso_callback, value) }
 
-	var ImageView.loadUrl : String
-		get() { return this.getTag(R.id.tag_loading_url) as String }
+	var ImageView.loadUrl : String?
+		get() { return this.getTag(R.id.tag_loading_url) as? String }
 		set(value) {
+			if (value == null) return
 			this.setTag(R.id.tag_loading_url, value)
 			Picasso.with(this.context).load(value).let { makePicassoRequest(it) }
 		}
 
-	var ImageView.loadUri : Uri
-		get() { return this.getTag(R.id.tag_loading_uri) as Uri }
+	var ImageView.loadUri : Uri?
+		get() { return this.getTag(R.id.tag_loading_uri) as? Uri }
 		set(value) {
+			if (value == null) return
 			this.setTag(R.id.tag_loading_uri, value)
 			Picasso.with(this.context).load(value).let { makePicassoRequest(it) }
 		}
 
-	var ImageView.loadFile : File
-		get() { return File(this.getTag(R.id.tag_loading_url) as String) }
+	var ImageView.loadFile : File?
+		get() { return File(this.getTag(R.id.tag_loading_url) as? String) }
 		set(value) {
+			if (value == null) return
 			this.setTag(R.id.tag_loading_url, value.absolutePath)
 			Picasso.with(this.context).load(value).let { makePicassoRequest(it) }
 		}
 
+	/**
+	 * Set common options of requests
+	 *
+	 * @param transformer Methods to modify request options
+	 */
 	fun ImageView.picassoRequestTransform(transformer: RequestCreator.() -> Unit) {
 		setTag(R.id.tag_picasso_request_transfomer, transformer)
 	}
@@ -67,6 +83,9 @@ interface PicassoExtensions {
 		if (picassoCallback != null) request.into(this, picassoCallback) else request.into(this)
 	}
 
+	/**
+	 * Enable Material Fade-In Animation after loading
+	 */
 	fun ImageView.enableMaterialPicassoAnimation() {
 		this.picassoCallback = object : Callback {
 			override fun onSuccess() {
@@ -76,6 +95,12 @@ interface PicassoExtensions {
 		}
 	}
 
+	/**
+	 * Picasso.into() with Material Fade-In Animation
+	 *
+	 * @param view Target ImageView
+	 * @param callback Picasso Callback (Optional)
+	 */
 	fun RequestCreator.intoMaterialStyle(view : ImageView, callback : Callback? = null) {
 		into(view, object : Callback {
 			override fun onSuccess() {
