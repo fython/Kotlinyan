@@ -9,15 +9,38 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Button
 
+/**
+ * AppCompat Library Extensions
+ *
+ * @see <a href="https://github.com/fython/Kotlinyan/wiki/AppCompatExtensions">AppCompatExtensions Wiki</a>
+ */
 interface AppCompatExtensions {
 
 	// Kotlin-style builders
 
+	/**
+	 * Build AppCompat v7 AlertDialog in Fragment
+	 *
+	 * @param process The process of building AppCompat v7 AlertDialog
+	 * @see android.support.v7.app.AlertDialog
+	 */
 	fun Fragment.buildV7AlertDialog(process: AlertDialog.Builder.() -> Unit) = activity.buildV7AlertDialog(process)
 
+	/**
+	 * Build AppCompat v7 AlertDialog in Fragment
+	 *
+	 * @param process The process of building AppCompat v7 AlertDialog
+	 * @see android.support.v7.app.AlertDialog
+	 */
 	fun android.support.v4.app.Fragment
 			.buildV7AlertDialog(process: AlertDialog.Builder.() -> Unit) = activity.buildV7AlertDialog(process)
 
+	/**
+	 * Build AppCompat v7 AlertDialog in Activity
+	 *
+	 * @param process The process of building AppCompat v7 AlertDialog
+	 * @see android.support.v7.app.AlertDialog
+	 */
 	fun Activity.buildV7AlertDialog(process: AlertDialog.Builder.() -> Unit) : AlertDialog {
 		val builder = AlertDialog.Builder(this)
 		builder.process()
@@ -84,27 +107,81 @@ interface AppCompatExtensions {
 		get() { throw java.lang.NoSuchMethodException("View res id getter is not supported") }
 		set(value) { this.setView(value) }
 
-	fun AlertDialog.Builder.positiveButton(textId: Int, onClick: (DialogInterface, Int) -> Unit) {
+	/**
+	 * Set ok button for AlertDialog
+	 *
+	 * @param onClick onClick callback
+	 */
+	fun AlertDialog.Builder.okButton(onClick: (DialogInterface, Int) -> Unit = {_, _ ->}) {
+		setPositiveButton(android.R.string.ok, onClick)
+	}
+
+	/**
+	 * Set cancel button for AlertDialog
+	 *
+	 * @param onClick onClick callback
+	 */
+	fun AlertDialog.Builder.cancelButton(onClick: (DialogInterface, Int) -> Unit = {_, _ ->}) {
+		setNegativeButton(android.R.string.cancel, onClick)
+	}
+
+	/**
+	 * Set positive button for AlertDialog
+	 *
+	 * @param textId Text resource id
+	 * @param onClick onClick callback
+	 */
+	fun AlertDialog.Builder.positiveButton(textId: Int, onClick: (DialogInterface, Int) -> Unit = {_, _ ->}) {
 		setPositiveButton(textId, onClick)
 	}
 
-	fun AlertDialog.Builder.positiveButton(text: String, onClick: (DialogInterface, Int) -> Unit) {
+	/**
+	 * Set positive button for AlertDialog
+	 *
+	 * @param text Text string
+	 * @param onClick onClick callback
+	 */
+	fun AlertDialog.Builder.positiveButton(text: String, onClick: (DialogInterface, Int) -> Unit = {_, _ ->}) {
 		setPositiveButton(text, onClick)
 	}
 
-	fun AlertDialog.Builder.negativeButton(textId: Int, onClick: (DialogInterface, Int) -> Unit) {
+	/**
+	 * Set negative button for AlertDialog
+	 *
+	 * @param textId Text resource id
+	 * @param onClick onClick callback
+	 */
+	fun AlertDialog.Builder.negativeButton(textId: Int, onClick: (DialogInterface, Int) -> Unit = {_, _ ->}) {
 		setNegativeButton(textId, onClick)
 	}
 
-	fun AlertDialog.Builder.negativeButton(text: String, onClick: (DialogInterface, Int) -> Unit) {
+	/**
+	 * Set negative button for AlertDialog
+	 *
+	 * @param text Text string
+	 * @param onClick onClick callback
+	 */
+	fun AlertDialog.Builder.negativeButton(text: String, onClick: (DialogInterface, Int) -> Unit = {_, _ ->}) {
 		setNegativeButton(text, onClick)
 	}
 
-	fun AlertDialog.Builder.neutralButton(textId: Int, onClick: (DialogInterface, Int) -> Unit) {
+	/**
+	 * Set neutral button for AlertDialog
+	 *
+	 * @param textId Text resource id
+	 * @param onClick onClick callback
+	 */
+	fun AlertDialog.Builder.neutralButton(textId: Int, onClick: (DialogInterface, Int) -> Unit = {_, _ ->}) {
 		setNeutralButton(textId, onClick)
 	}
 
-	fun AlertDialog.Builder.neutralButton(text: String, onClick: (DialogInterface, Int) -> Unit) {
+	/**
+	 * Set neutral button for AlertDialog
+	 *
+	 * @param text Text string
+	 * @param onClick onClick callback
+	 */
+	fun AlertDialog.Builder.neutralButton(text: String, onClick: (DialogInterface, Int) -> Unit = {_, _ ->}) {
 		setNeutralButton(text, onClick)
 	}
 

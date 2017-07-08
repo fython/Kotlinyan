@@ -4,15 +4,30 @@ import android.content.res.ColorStateList
 import android.support.design.widget.Snackbar
 import android.view.View
 
+/**
+ * Support Design Library Extensions
+ *
+ * Help developers to use Android Support Design Library's widgets
+ *
+ * @see <a href="https://github.com/fython/Kotlinyan/wiki/SupportDesignExtensions">SupportDesignExtensions Wiki</a>
+ */
 interface SupportDesignExtensions {
 
+	/**
+	 * Make snackbar on parent view
+	 *
+	 * @param process the process of building snackbar
+	 */
 	fun View.snackbar(process: SnackbarBuilder.() -> Unit) : Snackbar {
 		val builder = SnackbarBuilder(this)
 		builder.process()
 		return builder.build()
 	}
 
-	class SnackbarBuilder(view: View) {
+	/**
+	 * Snackbar Builder
+	 */
+	class SnackbarBuilder internal constructor(view: View) {
 
 		private var snackbar : Snackbar = Snackbar.make(view, "", Snackbar.LENGTH_SHORT)
 
