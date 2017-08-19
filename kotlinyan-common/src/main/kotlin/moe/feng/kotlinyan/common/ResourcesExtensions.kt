@@ -32,7 +32,7 @@ interface ResourcesExtensions {
 	}
 
 	class DrawableResources internal constructor(private val res: Resources) {
-		operator fun get(id: Int): Drawable? = res.getDrawable(id)
+		operator fun get(id: Int): Drawable = res.getDrawable(id)
 	}
 
 	class DimensionResources internal constructor(private val res: Resources) {
@@ -48,11 +48,11 @@ interface ResourcesExtensions {
 	}
 
 	class LayoutResources internal constructor(private val res: Resources) {
-		operator fun get(id: Int) : XmlResourceParser? = res.getLayout(id)
+		operator fun get(id: Int) : XmlResourceParser = res.getLayout(id)
 	}
 
 	class StringResources internal constructor(private val res: Resources) {
-		operator fun get(id: Int) : String? = res.getString(id)
+		operator fun get(id: Int) : String = res.getString(id)
 	}
 
 	class StringArrayResources internal constructor(private val res: Resources) {
