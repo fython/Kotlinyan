@@ -144,4 +144,19 @@ interface ViewExtensions: ServiceExtensions {
 		}
 	}
 
+	// ViewGroup extend
+	operator fun ViewGroup.plusAssign(view: View) {
+		addView(view)
+	}
+
+	operator fun ViewGroup.minusAssign(view: View) {
+		removeView(view)
+	}
+
+	fun ViewGroup.forEach(consumer: (View) -> Unit) = forEachIndexed { _, view -> consumer(view) }
+
+	fun ViewGroup.forEachIndexed(consumer: (index: Int, view: View) -> Unit) {
+		for (index in 0..(childCount - 1)) consumer(index, this.getChildAt(index))
+	}
+
 }

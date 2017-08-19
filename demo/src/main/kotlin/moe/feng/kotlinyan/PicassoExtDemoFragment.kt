@@ -9,15 +9,17 @@ import android.widget.ImageView
 import com.squareup.picasso.MemoryPolicy
 import moe.feng.kotlinyan.common.AndroidExtensions
 import moe.feng.kotlinyan.common.PicassoExtensions
+import moe.feng.kotlinyan.common.findNonNullView
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 class PicassoExtDemoFragment : Fragment(), PicassoExtensions, AndroidExtensions {
+
+	private val imageView: ImageView by findNonNullView(R.id.image_lazy_load)
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedInstanceState: Bundle?): View
 		= inflater.inflate(R.layout.fragment_picasso_ext, container, false)
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-		val imageView = view[R.id.image_lazy_load] as ImageView
 		imageView.enableMaterialPicassoAnimation()
 		imageView.placeholderResource = R.mipmap.ic_launcher
 		imageView.picassoRequestTransform {

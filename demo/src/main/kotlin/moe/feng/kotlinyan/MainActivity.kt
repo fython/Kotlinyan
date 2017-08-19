@@ -12,13 +12,13 @@ import android.view.Menu
 import android.view.MenuItem
 import moe.feng.kotlinyan.common.AndroidExtensions
 import moe.feng.kotlinyan.common.ColorExtensions
-import org.jetbrains.anko.find
+import moe.feng.kotlinyan.common.lazyFindNonNullView
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity(), AndroidExtensions, ColorExtensions {
 
-	val tabLayout by lazy { find<TabLayout>(R.id.tab_layout) }
-	val viewPager by lazy { find<ViewPager>(R.id.view_pager) }
+	private val tabLayout: TabLayout by lazyFindNonNullView(R.id.tab_layout)
+	private val viewPager: ViewPager by lazyFindNonNullView(R.id.view_pager)
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)

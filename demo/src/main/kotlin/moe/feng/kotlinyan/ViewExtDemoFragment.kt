@@ -11,42 +11,44 @@ import android.widget.EditText
 import android.widget.TextView
 import moe.feng.kotlinyan.common.AndroidExtensions
 import moe.feng.kotlinyan.common.ViewExtensions
+import moe.feng.kotlinyan.common.findNonNullView
+import moe.feng.kotlinyan.common.stringRes
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 class ViewExtDemoFragment : Fragment(), ViewExtensions, AndroidExtensions {
 
-	lateinit var keyboardTestEdit : EditText
+	private val keyboardTestEdit: EditText by findNonNullView(R.id.keyboard_test_edit)
+
+	private val pxToDpFormat by stringRes(R.string.px_to_dp_text)
+	private val dpToPxFormat by stringRes(R.string.dp_to_px_text)
+	private val pxToSpFormat by stringRes(R.string.px_to_sp_text)
+	private val spToPxFormat by stringRes(R.string.sp_to_px_text)
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedInstanceState: Bundle?): View
 		= inflater.inflate(R.layout.fragment_view_ext, container, false)
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-		keyboardTestEdit = view[R.id.keyboard_test_edit] as EditText
 		view[R.id.show_keyboard].onClick { keyboardTestEdit.showKeyboard() }
 		view[R.id.hide_keyboard].onClick { keyboardTestEdit.hideKeyboard() }
 
 		(view[R.id.edit_px_to_dp] as EditText).onTextChanged {
 			val from = it.toString().toFloatOrNull() ?: 0F
-			(view[R.id.result_px_to_dp] as TextView).text =
-					resources.string[R.string.px_to_dp_text]!!.format(from, from.pxToDp(activity))
+			(view[R.id.result_px_to_dp] as TextView).text = pxToDpFormat.format(from, from.pxToDp(activity))
 		}
 
 		(view[R.id.edit_dp_to_px] as EditText).onTextChanged {
 			val from = it.toString().toFloatOrNull() ?: 0F
-			(view[R.id.result_dp_to_px] as TextView).text =
-					resources.string[R.string.dp_to_px_text]!!.format(from, from.dpToPx(activity))
+			(view[R.id.result_dp_to_px] as TextView).text = dpToPxFormat.format(from, from.dpToPx(activity))
 		}
 
 		(view[R.id.edit_px_to_sp] as EditText).onTextChanged {
 			val from = it.toString().toFloatOrNull() ?: 0F
-			(view[R.id.result_px_to_sp] as TextView).text =
-					resources.string[R.string.px_to_sp_text]!!.format(from, from.pxToSp(activity))
+			(view[R.id.result_px_to_sp] as TextView).text = pxToSpFormat.format(from, from.pxToSp(activity))
 		}
 
 		(view[R.id.edit_sp_to_px] as EditText).onTextChanged {
 			val from = it.toString().toFloatOrNull() ?: 0F
-			(view[R.id.result_sp_to_px] as TextView).text =
-					resources.string[R.string.sp_to_px_text]!!.format(from, from.spToPx(activity))
+			(view[R.id.result_sp_to_px] as TextView).text = spToPxFormat.format(from, from.spToPx(activity))
 		}
 	}
 

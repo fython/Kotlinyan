@@ -9,15 +9,17 @@ import android.widget.ImageView
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import moe.feng.kotlinyan.common.AndroidExtensions
 import moe.feng.kotlinyan.common.GlideExtensions
+import moe.feng.kotlinyan.common.findNonNullView
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 class GlideExtDemoFragment : Fragment(), GlideExtensions, AndroidExtensions {
+
+	private val imageView: ImageView by findNonNullView(R.id.image_lazy_load)
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedInstanceState: Bundle?): View
 		= inflater.inflate(R.layout.fragment_picasso_ext, container, false)
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-		val imageView = view[R.id.image_lazy_load] as ImageView
 		imageView.placeholderResource = R.mipmap.ic_launcher
 		imageView.glideBuilderTransform {
 			animate(android.R.anim.fade_in)
