@@ -1,10 +1,13 @@
-package moe.feng.kotlinyan.common
+package moe.feng.kotlinyan.compat
 
 import android.annotation.TargetApi
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.support.v4.app.Fragment
 import android.view.View
+import moe.feng.kotlinyan.common.LazyGetNonNullView
+import moe.feng.kotlinyan.common.LazyGetView
+import moe.feng.kotlinyan.common.ResourcesProperty
 
 fun <T: View> Fragment.findView(viewId: Int): LazyGetView<Fragment, T?> {
 	return LazyGetView(viewId, { fragment, id -> fragment.view?.findViewById(id) }, dontLazy = true)
