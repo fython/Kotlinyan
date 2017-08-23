@@ -2,6 +2,7 @@ package moe.feng.kotlinyan.common
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
@@ -147,6 +148,27 @@ interface AndroidExtensions : ActivityExtensions, ViewExtensions, ResourcesExten
 				is SizeF -> putSizeF(key, value)
 			}
 			else -> throw UnsupportedOperationException("Unsupported type ${value.javaClass.name} in params")
+		}
+	}
+
+	operator fun SharedPreferences.get(key: String): SharedPreferencesGetter?
+			= if (contains(key)) SharedPreferencesGetter(this, key) else null
+
+	class SharedPreferencesGetter internal constructor(private val sp: SharedPreferences, val key: String) {
+		fun asString(defValue: String? = null): String = sp.getString(key, defValue)
+		fun asInt(defValue: Int = 0): Int = sp.getInt(key, defValue)
+		fun asBoolean(defValue: Boolean = false): Boolean = sp.getBoolean(key, defValue)
+		fun asLong(defValue: Long = 0): Long = sp.getLong(key, defValue)
+		fun asFloat(defValue: Float = 0F): Float = sp.getFloat(key, defValue)
+	}
+
+	operator fun SharedPreferences.set(key: String, value: Any) {
+		when (value) {
+			is String -> edit().putString(key, value).apply()
+			is Int -> edit().putInt(key, value).apply()
+			is Boolean -> edit().putBoolean(key, value).apply()
+			is Long -> edit().putLong(key, value).apply()
+			is Float -> edit().putFloat(key, value).apply()
 		}
 	}
 
