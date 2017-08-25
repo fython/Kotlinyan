@@ -31,75 +31,75 @@ interface ISharedPreferencesProvider: ContextExtensions {
 
 	val sharedPref: SharedPreferences
 
-	fun stringValue(key: String, defValue: String? = null) = StringSharedPreferenceGetter(key, defValue)
-	fun intValue(key: String, defValue: Int = 0) = IntSharedPreferenceGetter(key, defValue)
-	fun booleanValue(key: String, defValue: Boolean = false) = BooleanSharedPreferenceGetter(key, defValue)
-	fun longValue(key: String, defValue: Long = 0) = LongSharedPreferenceGetter(key, defValue)
-	fun floatValue(key: String, defValue: Float = 0F) = FloatSharedPreferenceGetter(key, defValue)
+	fun stringValue(key: String? = null, defValue: String? = null) = StringSharedPreferenceGetter(key, defValue)
+	fun intValue(key: String? = null, defValue: Int = 0) = IntSharedPreferenceGetter(key, defValue)
+	fun booleanValue(key: String? = null, defValue: Boolean = false) = BooleanSharedPreferenceGetter(key, defValue)
+	fun longValue(key: String? = null, defValue: Long = 0) = LongSharedPreferenceGetter(key, defValue)
+	fun floatValue(key: String? = null, defValue: Float = 0F) = FloatSharedPreferenceGetter(key, defValue)
 
 }
 
-class StringSharedPreferenceGetter internal constructor(private val key: String,
+class StringSharedPreferenceGetter internal constructor(private val key: String? = null,
                                                         private val defValue: String? = null)
 	: ReadWriteProperty<ISharedPreferencesProvider, String?>, AndroidExtensions {
 
 	override fun getValue(thisRef: ISharedPreferencesProvider, property: KProperty<*>): String?
-			= thisRef.sharedPref[key].asString(defValue)
+			= thisRef.sharedPref[key ?: property.name].asString(defValue)
 
 	override fun setValue(thisRef: ISharedPreferencesProvider, property: KProperty<*>, value: String?) {
-		thisRef.sharedPref[key] = value
+		thisRef.sharedPref[key ?: property.name] = value
 	}
 
 }
 
-class IntSharedPreferenceGetter internal constructor(private val key: String,
+class IntSharedPreferenceGetter internal constructor(private val key: String? = null,
                                                      private val defValue: Int = 0)
 	: ReadWriteProperty<ISharedPreferencesProvider, Int>, AndroidExtensions {
 
 	override fun getValue(thisRef: ISharedPreferencesProvider, property: KProperty<*>): Int
-			= thisRef.sharedPref[key].asInt(defValue)
+			= thisRef.sharedPref[key ?: property.name].asInt(defValue)
 
 	override fun setValue(thisRef: ISharedPreferencesProvider, property: KProperty<*>, value: Int) {
-		thisRef.sharedPref[key] = value
+		thisRef.sharedPref[key ?: property.name] = value
 	}
 
 }
 
-class BooleanSharedPreferenceGetter internal constructor(private val key: String,
+class BooleanSharedPreferenceGetter internal constructor(private val key: String? = null,
                                                      private val defValue: Boolean = false)
 	: ReadWriteProperty<ISharedPreferencesProvider, Boolean>, AndroidExtensions {
 
 	override fun getValue(thisRef: ISharedPreferencesProvider, property: KProperty<*>): Boolean
-			= thisRef.sharedPref[key].asBoolean(defValue)
+			= thisRef.sharedPref[key ?: property.name].asBoolean(defValue)
 
 	override fun setValue(thisRef: ISharedPreferencesProvider, property: KProperty<*>, value: Boolean) {
-		thisRef.sharedPref[key] = value
+		thisRef.sharedPref[key ?: property.name] = value
 	}
 
 }
 
-class LongSharedPreferenceGetter internal constructor(private val key: String,
+class LongSharedPreferenceGetter internal constructor(private val key: String? = null,
                                                          private val defValue: Long = 0)
 	: ReadWriteProperty<ISharedPreferencesProvider, Long>, AndroidExtensions {
 
 	override fun getValue(thisRef: ISharedPreferencesProvider, property: KProperty<*>): Long
-			= thisRef.sharedPref[key].asLong(defValue)
+			= thisRef.sharedPref[key ?: property.name].asLong(defValue)
 
 	override fun setValue(thisRef: ISharedPreferencesProvider, property: KProperty<*>, value: Long) {
-		thisRef.sharedPref[key] = value
+		thisRef.sharedPref[key ?: property.name] = value
 	}
 
 }
 
-class FloatSharedPreferenceGetter internal constructor(private val key: String,
+class FloatSharedPreferenceGetter internal constructor(private val key: String? = null,
                                                        private val defValue: Float = 0F)
 	: ReadWriteProperty<ISharedPreferencesProvider, Float>, AndroidExtensions {
 
 	override fun getValue(thisRef: ISharedPreferencesProvider, property: KProperty<*>): Float
-			= thisRef.sharedPref[key].asFloat(defValue)
+			= thisRef.sharedPref[key ?: property.name].asFloat(defValue)
 
 	override fun setValue(thisRef: ISharedPreferencesProvider, property: KProperty<*>, value: Float) {
-		thisRef.sharedPref[key] = value
+		thisRef.sharedPref[key ?: property.name] = value
 	}
 
 }
