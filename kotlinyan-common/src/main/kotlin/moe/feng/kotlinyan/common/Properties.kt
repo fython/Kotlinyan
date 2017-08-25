@@ -86,11 +86,14 @@ class GetPreference<out T: Preference>(private val keyName: String)
 
 // Shared Preferences Properties
 
-class GetSharedPreferences(private val prefName: String,
-                          private val mode: Int = Context.MODE_PRIVATE): ReadOnlyProperty<Context, SharedPreferences> {
+class GetSharedPreferences internal constructor(
+		private val context: Context,
+		private val prefName: String,
+		private val mode: Int = Context.MODE_PRIVATE
+): ReadOnlyProperty<Any, SharedPreferences> {
 
-	override fun getValue(thisRef: Context, property: KProperty<*>): SharedPreferences {
-		return thisRef.getSharedPreferences(prefName, mode)
+	override fun getValue(thisRef: Any, property: KProperty<*>): SharedPreferences {
+		return context.getSharedPreferences(prefName, mode)
 	}
 
 }

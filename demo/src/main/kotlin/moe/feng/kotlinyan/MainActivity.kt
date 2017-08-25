@@ -8,10 +8,12 @@ import android.support.design.widget.TabLayout
 import android.support.v13.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import moe.feng.kotlinyan.common.AndroidExtensions
 import moe.feng.kotlinyan.common.ColorExtensions
+import moe.feng.kotlinyan.common.getSharedPreferencesProvider
 import moe.feng.kotlinyan.common.lazyFindNonNullView
 import org.jetbrains.anko.toast
 
@@ -19,6 +21,10 @@ class MainActivity : AppCompatActivity(), AndroidExtensions, ColorExtensions {
 
 	private val tabLayout: TabLayout by lazyFindNonNullView(R.id.tab_layout)
 	private val viewPager: ViewPager by lazyFindNonNullView(R.id.view_pager)
+
+	private val testSettings = getSharedPreferencesProvider<TestSettings>()
+
+	private val TAG = MainActivity::class.java.simpleName
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -28,6 +34,15 @@ class MainActivity : AppCompatActivity(), AndroidExtensions, ColorExtensions {
 
 		viewPager.adapter = PagerAdapter(fragmentManager)
 		tabLayout.setupWithViewPager(viewPager)
+
+		Log.i(TAG, "TestSettings: a=${testSettings.a} b=${testSettings.b} c=${testSettings.c} d=${testSettings.d} e=${testSettings.e}")
+		testSettings.a += "1"
+		if (testSettings.a!!.length > 10) testSettings.a = "Test"
+		testSettings.b += 1
+		testSettings.c = !testSettings.c
+		testSettings.d += .001F
+		testSettings.e += 1
+		Log.i(TAG, "TestSettings: a=${testSettings.a} b=${testSettings.b} c=${testSettings.c} d=${testSettings.d} e=${testSettings.e}")
 	}
 
 	override fun onCreateOptionsMenu(menu: Menu?): Boolean {
