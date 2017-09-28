@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import moe.feng.kotlinyan.common.AndroidExtensions
-import moe.feng.kotlinyan.common.GlideExtensions
-import moe.feng.kotlinyan.common.findNonNullView
+import moe.feng.kotlinyan.common.*
+import moe.feng.kotlinyan.glide.glideBuilderTransform
+import moe.feng.kotlinyan.picasso.loadUrl
+import moe.feng.kotlinyan.picasso.placeholderResource
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
-class GlideExtDemoFragment : Fragment(), GlideExtensions, AndroidExtensions {
+class GlideExtDemoFragment : Fragment() {
 
 	private val imageView: ImageView by findNonNullView(R.id.image_lazy_load)
 

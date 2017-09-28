@@ -9,14 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import moe.feng.kotlinyan.common.AndroidExtensions
-import moe.feng.kotlinyan.common.RecyclerViewExtensions
-import moe.feng.kotlinyan.common.ViewExtensions
+import moe.feng.kotlinyan.common.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.fragmentUiThread
 import org.jetbrains.anko.support.v4.onRefresh
 
-class RecyclerViewExtDemoFragment : Fragment(), RecyclerViewExtensions, AndroidExtensions {
+class RecyclerViewExtDemoFragment : Fragment() {
 
 	lateinit var refreshLayout : SwipeRefreshLayout
 	lateinit var recyclerView : RecyclerView
@@ -62,7 +60,7 @@ class RecyclerViewExtDemoFragment : Fragment(), RecyclerViewExtensions, AndroidE
 		}
 	}
 
-	private class SimpleAdapter(var count : Int) : RecyclerView.Adapter<SimpleAdapter.ViewHolder>(), AndroidExtensions {
+	private class SimpleAdapter(var count : Int) : RecyclerView.Adapter<SimpleAdapter.ViewHolder>() {
 
 		override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
 			holder?.textView?.text = "Item %d".format(position)
@@ -73,7 +71,7 @@ class RecyclerViewExtDemoFragment : Fragment(), RecyclerViewExtensions, AndroidE
 		override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
 			= ViewHolder(parent.inflateView(R.layout.simple_list_item_1))
 
-		class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), ViewExtensions {
+		class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 			val textView by lazy { itemView[R.id.text] as TextView }
 

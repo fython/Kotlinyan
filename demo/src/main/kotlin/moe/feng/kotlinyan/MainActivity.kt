@@ -11,13 +11,10 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import moe.feng.kotlinyan.common.AndroidExtensions
-import moe.feng.kotlinyan.common.ColorExtensions
-import moe.feng.kotlinyan.common.getSharedPreferencesProvider
-import moe.feng.kotlinyan.common.lazyFindNonNullView
+import moe.feng.kotlinyan.common.*
 import org.jetbrains.anko.toast
 
-class MainActivity : AppCompatActivity(), AndroidExtensions, ColorExtensions {
+class MainActivity : AppCompatActivity(), PermissionActivity {
 
 	private val tabLayout: TabLayout by lazyFindNonNullView(R.id.tab_layout)
 	private val viewPager: ViewPager by lazyFindNonNullView(R.id.view_pager)

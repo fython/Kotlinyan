@@ -9,13 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
-import moe.feng.kotlinyan.common.AndroidExtensions
-import moe.feng.kotlinyan.common.ViewExtensions
-import moe.feng.kotlinyan.common.findNonNullView
-import moe.feng.kotlinyan.common.stringRes
+import moe.feng.kotlinyan.common.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
-class ViewExtDemoFragment : Fragment(), ViewExtensions, AndroidExtensions {
+class ViewExtDemoFragment : Fragment() {
 
 	private val keyboardTestEdit: EditText by findNonNullView(R.id.keyboard_test_edit)
 

@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.squareup.picasso.MemoryPolicy
-import moe.feng.kotlinyan.common.AndroidExtensions
-import moe.feng.kotlinyan.common.PicassoExtensions
-import moe.feng.kotlinyan.common.findNonNullView
+import moe.feng.kotlinyan.common.*
+import moe.feng.kotlinyan.picasso.enableMaterialPicassoAnimation
+import moe.feng.kotlinyan.picasso.loadUrl
+import moe.feng.kotlinyan.picasso.picassoRequestTransform
+import moe.feng.kotlinyan.picasso.placeholderResource
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
-class PicassoExtDemoFragment : Fragment(), PicassoExtensions, AndroidExtensions {
+class PicassoExtDemoFragment : Fragment() {
 
 	private val imageView: ImageView by findNonNullView(R.id.image_lazy_load)
 

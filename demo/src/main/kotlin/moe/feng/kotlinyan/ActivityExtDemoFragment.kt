@@ -8,13 +8,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import moe.feng.kotlinyan.common.AndroidExtensions
-import moe.feng.kotlinyan.common.AppCompatExtensions
-import moe.feng.kotlinyan.common.SupportDesignExtensions
+import moe.feng.kotlinyan.common.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.toast
 
-class ActivityExtDemoFragment : Fragment(), AndroidExtensions, AppCompatExtensions, SupportDesignExtensions {
+class ActivityExtDemoFragment : Fragment() {
 
 	companion object {
 
