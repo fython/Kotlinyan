@@ -6,7 +6,7 @@
 >
 > 让 Kotlin Android 应用开发更加简单、优雅
 
-[English Documentation (Sorry... It hasn't finished yet)](README-EN.md)
+[English Documentation](README.md)
 
 [Wiki/使用文档](https://github.com/fython/Kotlinyan/wiki)
 
@@ -44,6 +44,12 @@ dependencies {
     compile 'moe.feng.kotlinyan:kotlinyan-recyclerview-support:latest-version'
     compile 'moe.feng.kotlinyan:kotlinyan-appcompat-support:latest-version'
 }
+```
+
+在你的类中引入扩展方法:
+
+```kotlin
+import moe.feng.kotlinyan.common.*
 ```
 
 ## 使用方法
