@@ -45,12 +45,10 @@ dependencies {
 }
 ```
 
-Implement extensions to your classes:
+Implement extension methods to your classes:
 
 ```kotlin
-class MainActivity: AppCompatActivity(), AndroidExtensions, ... {
-    ...
-}
+import moe.feng.kotlinyan.common.*
 ```
 
 ## Usage
