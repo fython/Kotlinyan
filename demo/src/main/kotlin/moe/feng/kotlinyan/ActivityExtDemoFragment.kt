@@ -87,6 +87,9 @@ class ActivityExtDemoFragment : Fragment() {
 					((bundle["stringArray"] as? Array<String>)?.reduce { a, b -> "$a,$b" } ?: "defaultValue"))
 			Log.i(TAG, "nonExist=" + (bundle["nonExist"] as? String ?: "defaultValue"))
 		}
+
+		val (screenWidth, screenHeight) = activity.windowManager.defaultDisplayMetrics
+		Log.i(TAG, "Default display metrics: width=$screenWidth, height=$screenHeight")
 	}
 
 }

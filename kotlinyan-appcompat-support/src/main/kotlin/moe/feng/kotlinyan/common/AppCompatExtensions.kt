@@ -32,7 +32,7 @@ fun Fragment.buildV7AlertDialog(process: AlertDialog.Builder.() -> Unit) = activ
  * @see android.support.v7.app.AlertDialog
  */
 fun android.support.v4.app.Fragment
-		.buildV7AlertDialog(process: AlertDialog.Builder.() -> Unit) = activity.buildV7AlertDialog(process)
+		.buildV7AlertDialog(process: AlertDialog.Builder.() -> Unit) = activity?.buildV7AlertDialog(process)
 
 /**
  * Build AppCompat v7 AlertDialog in Activity

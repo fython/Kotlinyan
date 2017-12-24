@@ -167,10 +167,10 @@ val Context.systemServices: Services get() = Services(this)
 // WindowManager Extensions
 
 val WindowManager.screenHeight: Int
-	get() = DisplayMetrics().apply { defaultDisplay.getRealMetrics(this) }.heightPixels
+	get() = DisplayMetrics().apply { defaultDisplay.getMetrics(this) }.heightPixels
 
 val WindowManager.screenWidth: Int
-	get() = DisplayMetrics().apply { defaultDisplay.getRealMetrics(this) }.widthPixels
+	get() = DisplayMetrics().apply { defaultDisplay.getMetrics(this) }.widthPixels
 
 val WindowManager.trueScreenHeight: Int
 	get() {
@@ -213,6 +213,20 @@ val WindowManager.trueScreenWidth: Int
 		}
 		return dpi
 	}
+
+val WindowManager.defaultDisplayMetrics: DisplayMetrics
+    get() = DisplayMetrics().apply { defaultDisplay.getMetrics(this) }
+
+val WindowManager.defaultDisplayRealMetrics: DisplayMetrics
+    get() = DisplayMetrics().apply { defaultDisplay.getRealMetrics(this) }
+
+operator fun DisplayMetrics.component1(): Int {
+    return widthPixels
+}
+
+operator fun DisplayMetrics.component2(): Int {
+    return heightPixels
+}
 
 // BatteryManager Extensions
 
