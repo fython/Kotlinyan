@@ -2,15 +2,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion TARGET_SDK_VERSION.toInteger()
-    buildToolsVersion BUILD_TOOLS_VERSION
+    compileSdkVersion rootProject.ext.targetSdkVersion
 
     defaultConfig {
         applicationId "moe.feng.kotlinyan"
         minSdkVersion 21
-        targetSdkVersion TARGET_SDK_VERSION.toInteger()
-        versionCode VERSION_CODE.toInteger()
-        versionName VERSION_NAME
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
     }
 
     buildTypes {
@@ -37,7 +36,7 @@ dependencies {
     compile project(':kotlinyan-glide-support')
     compile project(':kotlinyan-recyclerview-support')
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile "org.jetbrains.anko:anko:0.10.1"
+    compile "org.jetbrains.anko:anko:0.10.2"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 }
 repositories {
