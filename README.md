@@ -1,4 +1,4 @@
-# Kotlinyan
+# [Deprecated] Kotlinyan
 
 [![](https://jitpack.io/v/moe.feng/kotlinyan.svg)](https://jitpack.io/#moe.feng/kotlinyan)
 
@@ -11,6 +11,10 @@
 ## Introduction
 
 Kotlinyan is an Android utilities collection, written in Kotlin. Use Kotlin features to improve Android development performance.
+
+## Why I annonated it deprecated?
+
+Of course it can help me write less and more simple code, but some apis are not beautiful. And I don't think it helpful to use Kotlin for every Android developers.
 
 ## Import libarry
 
